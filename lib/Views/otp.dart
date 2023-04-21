@@ -36,7 +36,10 @@ class _otpState extends State<otp> {
               SizedBox(
                 height: 60,
               ),
-              Image.asset('assets/logo2.png'),
+              Image.asset(
+                'assets/logo2.png',
+                height: 68,
+              ),
               SizedBox(
                 height: 40,
               ),
@@ -96,6 +99,7 @@ class _otpState extends State<otp> {
                         ));
                   },
                   style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero,
                       ),

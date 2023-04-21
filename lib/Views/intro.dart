@@ -134,6 +134,7 @@ class _IntroPageState extends State<IntroPage> {
                             // TODO: Add logic for handling button press
                           },
                           style: OutlinedButton.styleFrom(
+                              side: BorderSide.none,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
@@ -176,6 +177,7 @@ class _IntroPageState extends State<IntroPage> {
                           // TODO: Add logic for handling button press
                         },
                         style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero,
                             ),

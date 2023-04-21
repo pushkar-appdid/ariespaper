@@ -1,3 +1,4 @@
+import 'package:ariespaper/Views/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -27,15 +28,17 @@ class _signupState extends State<signup> {
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Container(
-          width: double.maxFinite,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Text(
                   'Create an Account for Aries Paper App',
@@ -60,7 +63,8 @@ class _signupState extends State<signup> {
                 ),
                 ListView(
                   shrinkWrap: true,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
                   children: [
                     SizedBox(height: 16.0),
                     TextField(
@@ -122,41 +126,47 @@ class _signupState extends State<signup> {
                     SizedBox(height: 16.0),
                   ],
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // TODO: Add logic for handling button press
-                      },
-                      style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero,
-                          ),
-                          fixedSize: Size(double.maxFinite, 50),
-                          backgroundColor: Color(0xFFFFB800)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Submit',
-                            style: TextStyle(color: Colors.black, fontSize: 16),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Colors.black,
-                          )
-                        ],
+                SizedBox(
+                  height: 80,
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    // TODO: Add logic for handling button press
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => home(),
+                        ));
+                  },
+                  style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
                       ),
-                    ),
+                      fixedSize: Size(double.maxFinite, 50),
+                      backgroundColor: Color(0xFFFFB800)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.black,
+                      )
+                    ],
                   ),
                 )
               ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -34,7 +34,10 @@ class _loginState extends State<login> {
               SizedBox(
                 height: 60,
               ),
-              Image.asset('assets/logo2.png'),
+              Image.asset(
+                'assets/logo2.png',
+                height: 68,
+              ),
               SizedBox(
                 height: 40,
               ),
@@ -117,6 +120,7 @@ class _loginState extends State<login> {
                         ));
                   },
                   style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero,
                       ),

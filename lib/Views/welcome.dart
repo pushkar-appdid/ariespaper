@@ -22,7 +22,10 @@ class welcome extends StatelessWidget {
                     fontSize: 20, fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30.0),
-              child: Image.asset('assets/logo2.png'),
+              child: Image.asset(
+                'assets/logo2.png',
+                height: 68,
+              ),
             ),
             RichText(
               textAlign: TextAlign.center,
@@ -44,7 +47,10 @@ class welcome extends StatelessWidget {
                 ],
               ),
             ),
-            Image.asset('assets/welcome.png'),
+            Image.asset(
+              'assets/welcome.png',
+              height: 300,
+            ),
             Expanded(
                 child: Container(
               width: double.maxFinite,
@@ -70,6 +76,7 @@ class welcome extends StatelessWidget {
                             ));
                       },
                       style: OutlinedButton.styleFrom(
+                          side: BorderSide.none,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                           ),
