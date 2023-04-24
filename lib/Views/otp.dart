@@ -73,7 +73,7 @@ class _otpState extends State<otp> {
                   pinTheme: PinTheme(
                     shape: PinCodeFieldShape.box,
                     borderRadius: BorderRadius.circular(0),
-                    fieldHeight: 60,
+                    fieldHeight: 50,
                     fieldWidth: 50,
                     activeFillColor: Colors.white,
                     activeColor: Color(0xFFFFB800),

@@ -1,4 +1,5 @@
 import 'package:ariespaper/Views/homepage.dart';
+import 'package:ariespaper/Views/newhomepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -116,7 +117,7 @@ class _signupState extends State<signup> {
                     SizedBox(height: 16.0),
                     TextField(
                       decoration: InputDecoration(
-                        labelText: 'Textfield 6',
+                        labelText: 'Select City',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.zero,
                         ),

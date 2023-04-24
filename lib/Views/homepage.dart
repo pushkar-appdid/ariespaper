@@ -1,5 +1,7 @@
 import 'package:ariespaper/Views/aboutUs.dart';
+import 'package:ariespaper/Views/more.dart';
 import 'package:ariespaper/Views/signup.dart';
+import 'package:ariespaper/Views/supplier.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,9 +18,9 @@ class _homeState extends State<home> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home'),
+    oldhome(),
     Text('Orders'),
-    Text('More'),
+    more()
   ];
 
   void _onItemTapped(int index) {
@@ -26,8 +28,6 @@ class _homeState extends State<home> {
       _selectedIndex = index;
     });
   }
-
-  int _currentImageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +114,13 @@ class _homeState extends State<home> {
                     trailing: Icon(Icons.arrow_forward_ios, size: 18),
                   ),
                   ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => supply(),
+                          ));
+                    },
                     dense: true,
                     leading: Image.asset('assets/d5.png'),
                     title: Text('All Suppliers'),
@@ -192,44 +199,117 @@ class _homeState extends State<home> {
         centerTitle: true,
         actions: [Image.asset('assets/bell.png')],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 16,
+      body: _widgetOptions[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyle(color: Colors.black),
+        unselectedLabelStyle: TextStyle(color: Colors.black),
+        backgroundColor: Color(0xFFFFF6DE),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.home_outlined,
+              color: Colors.black,
+            ),
+            label: 'Home',
           ),
-          CarouselSlider.builder(
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index, int realIndex) {
-              return Container(
-                height: 50,
-                child: Image.asset(
-                  'assets/offer.png',
-                  fit: BoxFit.fill,
-                ),
-              );
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: 'Order',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/more.png'),
+            activeIcon: Image.asset(
+              'assets/more.png',
+              color: Colors.black,
+            ),
+            label: 'More',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+class oldhome extends StatefulWidget {
+  const oldhome({super.key});
+
+  @override
+  State<oldhome> createState() => _oldhomeState();
+}
+
+class _oldhomeState extends State<oldhome> {
+  int _currentImageIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 16,
+        ),
+        CarouselSlider.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index, int realIndex) {
+            return Stack(alignment: AlignmentDirectional.center, children: [
+              Image.asset(
+                'assets/offer.png',
+                fit: BoxFit.fill,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Godawari pulp and paper',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                  Text(
+                    'Top paper provider',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(fontSize: 8, fontWeight: FontWeight.w400),
+                  ),
+                ],
+              )
+            ]);
+          },
+          options: CarouselOptions(
+            height: 100,
+            enlargeCenterPage: true,
+            // aspectRatio: 9 / 16,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _currentImageIndex = index;
+              });
             },
-            options: CarouselOptions(
-              height: 100,
-              enlargeCenterPage: true,
-              // aspectRatio: 9 / 16,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _currentImageIndex = index;
-                });
-              },
-              viewportFraction: 0.7,
-            ),
+            viewportFraction: 0.7,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30.0, bottom: 10),
-            child: Text(
-              'Top suppliers',
-              style: GoogleFonts.montserrat(
-                  color: Colors.black, fontWeight: FontWeight.w500),
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30.0, bottom: 10),
+          child: Text(
+            'Top suppliers',
+            style: GoogleFonts.montserrat(
+                color: Colors.black, fontWeight: FontWeight.w500),
           ),
-          Padding(
+        ),
+        GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => about(),
+              )),
+          child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: SizedBox(
               height: 90,
@@ -276,7 +356,14 @@ class _homeState extends State<home> {
               ),
             ),
           ),
-          Padding(
+        ),
+        GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => about(),
+              )),
+          child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: SizedBox(
               height: 90,
@@ -323,7 +410,14 @@ class _homeState extends State<home> {
               ),
             ),
           ),
-          Padding(
+        ),
+        GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => about(),
+              )),
+          child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: SizedBox(
               height: 90,
@@ -370,7 +464,14 @@ class _homeState extends State<home> {
               ),
             ),
           ),
-          Padding(
+        ),
+        GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => about(),
+              )),
+          child: Padding(
             padding: const EdgeInsets.all(14.0),
             child: SizedBox(
               height: 90,
@@ -417,41 +518,8 @@ class _homeState extends State<home> {
               ),
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: TextStyle(color: Colors.black),
-        unselectedLabelStyle: TextStyle(color: Colors.black),
-        backgroundColor: Color(0xFFFFF6DE),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              color: Colors.black,
-            ),
-            activeIcon: Icon(
-              Icons.home_outlined,
-              color: Colors.black,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Order',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/more.png'),
-            activeIcon: Image.asset(
-              'assets/more.png',
-              color: Colors.black,
-            ),
-            label: 'More',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
+        ),
+      ],
     );
   }
 }

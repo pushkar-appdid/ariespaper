@@ -20,12 +20,12 @@ class _IntroPageState extends State<IntroPage> {
   final List<String> intro = [
     'Revolutionizing Paper\nProcurement: The Aries App and\nIts Impact on Paper Sellers',
     'Streamlining Paper Purchases:\nHow the Aries App is Simplifying\nthe Procurement Process',
-    'Expanding Your Paper Options:\nHow Aries is Helping Buyers\nFind the Perfect Product'
+    'Expanding Your Paper Options:\nHow Aries is Helping Buyers Find\nthe Perfect Product'
   ];
   final List<String> subtext = [
     ' How Aries is changing the game for paper sellers by\nconnecting them to a wider range of potential\ncustomers',
     'A closer look at the user-friendly features of the Aries\napp and how it is making it easier than ever to find and\npurchase paper from a variety of suppliers',
-    'Discover how the Aries app is providing users with a wealth of options when it comes to purchasing paper, giving them access to a greater range of products and suppliers than ever before'
+    'Discover how the Aries app is providing users with a\nwealth of options when it comes to purchasing paper,\ngiving them access to a greater range of products and\nsuppliers than ever before'
   ];
   final CarouselController _controller = CarouselController();
 
@@ -93,10 +93,12 @@ class _IntroPageState extends State<IntroPage> {
                         children: [
                           Text(text,
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              )),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18)),
                           SizedBox(
                             height: 20,
                           ),
