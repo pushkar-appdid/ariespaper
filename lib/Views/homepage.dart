@@ -1,5 +1,7 @@
 import 'package:ariespaper/Views/aboutUs.dart';
+import 'package:ariespaper/Views/allsupplier.dart';
 import 'package:ariespaper/Views/more.dart';
+import 'package:ariespaper/Views/notification.dart';
 import 'package:ariespaper/Views/signup.dart';
 import 'package:ariespaper/Views/supplier.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -118,7 +120,7 @@ class _homeState extends State<home> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => supply(),
+                            builder: (context) => allsupply(),
                           ));
                     },
                     dense: true,
@@ -197,7 +199,15 @@ class _homeState extends State<home> {
           style: GoogleFonts.montserrat(color: Colors.black, fontSize: 16),
         ),
         centerTitle: true,
-        actions: [Image.asset('assets/bell.png')],
+        actions: [
+          GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => notification(),
+                  )),
+              child: Image.asset('assets/bell.png'))
+        ],
       ),
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
